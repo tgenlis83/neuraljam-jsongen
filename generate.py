@@ -1,9 +1,9 @@
-import gradio as gr
 from mistralai import Mistral
 from dotenv import load_dotenv
 import os
 import json
 import random
+import gradio as gr
 
 from convert import convert_and_return_jsons
 

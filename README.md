@@ -17,5 +17,5 @@ names, player_details, wagons = generate_train(<player_input>, <wagon_count2-10>
 ### Test the Gradio App
 ```bash
 pip install -r requirements.txt
-python gradio.py
+python app.py
 ```

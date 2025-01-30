@@ -1,4 +1,4 @@
-import gradio as gr
+import app as gr
 from generate import gradio_interface
 
 # Gradio app
