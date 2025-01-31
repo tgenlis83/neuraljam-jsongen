@@ -7,10 +7,6 @@ def parse_name(full_name):
     This is a simple heuristic:
        - lastName is the last token
        - firstName is everything before
-    For example:
-       "Dr. Amelia Hartford" -> firstName: "Dr. Amelia", lastName: "Hartford"
-       "Thomas Maxwell" -> firstName: "Thomas", lastName: "Maxwell"
-    Adjust this to your own naming conventions if needed.
     """
     tokens = full_name.strip().split()
     if len(tokens) == 1:
@@ -20,9 +16,9 @@ def parse_name(full_name):
 
 def infer_sex_from_model(model_type):
     """
-    A simple inference: if the string 'female' is in model_type, mark sex as 'female';
+    A simple inference: if 'female' is in model_type (case-insensitive), mark sex as 'female';
     if 'male' is in model_type, mark as 'male';
-    otherwise, mark as 'unknown' (or handle however you prefer).
+    otherwise, 'unknown'.
     """
     model_type_lower = model_type.lower()
     if 'female' in model_type_lower:
@@ -32,71 +28,82 @@ def infer_sex_from_model(model_type):
     else:
         return 'unknown'
 
-def convert_wagon_to_three_jsons(wagon_data):
+def convert_wagon_to_new_json_structure(wagon_data):
     """
-    Given a single wagon JSON structure like:
-    {
-      "id": 1,
-      "theme": "Alien by Ridley Scott",
-      "passcode": "Nostromo",
-      "passengers": [
-        {
-          "name": "Dr. Amelia Hartford",
-          "age": 47,
-          "profession": "Medical Researcher",
-          "personality": "Analytical, compassionate, and meticulous",
-          "role": "...",
-          "mystery_intrigue": "...",
-          "characer_model": "character-female-e"
-        },
-        ...
-      ]
-    }
-    produce:
-      1) names_json
-      2) player_details_json
-      3) wagons_json
+    Given one wagon's data:
+      {
+        "id": 1,
+        "theme": "...",
+        "passcode": "...",
+        "passengers": [ {...}, ... ]
+      }
+
+    Returns three pieces of data:
+      1) wagonNames   -> for the "names" array
+      2) wagonDetails -> for the "player_details" array
+      3) wagonEntry   -> for the "wagons" array
     """
     wagon_id = wagon_data.get("id", 0)
     theme = wagon_data.get("theme", "Unknown Theme")
     passcode = wagon_data.get("passcode", "no-passcode")
     passengers = wagon_data.get("passengers", [])
 
-    # 1) Build the "names" object for this wagon
-    #    The final structure should be: {"wagon-N": {"player-1": {...}, "player-2": {...}, ...}}
-    names_output = {}
+    # Example: wagon_id = 1 -> wagonKey = "wagon-1"
     wagon_key = f"wagon-{wagon_id}"
-    names_output[wagon_key] = {}
 
-    # 2) Build the "player_details" object for this wagon
-    #    The final structure: {"wagon-N": {"player-1": { "profile": {...}}, "player-2": {"profile": {...}}}}
-    player_details_output = {}
-    player_details_output[wagon_key] = {}
+    # 1) Build an object for "names"
+    #    Format: {
+    #       "wagonId": "wagon-1",
+    #       "players": [
+    #          { "playerId": "player-1", "firstName": "...", "lastName": "...", "sex": "...", "fullName": "..." },
+    #          ...
+    #       ]
+    #    }
+    wagonNames = {
+        "wagonId": wagon_key,
+        "players": []
+    }
 
-    # 3) Build the "wagons" array entry for this wagon
-    #    Each wagon in the final output is something like:
+    # 2) Build an object for "player_details"
+    #    Format: {
+    #       "wagonId": "wagon-1",
+    #       "players": [
+    #          {
+    #            "playerId": "player-1",
+    #            "profile": { "name": "...", "age": 47, ...}
+    #          },
+    #          ...
+    #       ]
+    #    }
+    wagonDetails = {
+        "wagonId": wagon_key,
+        "players": []
+    }
+
+    # 3) Build the "wagons" array entry
+    #    Format:
     #    {
-    #      "id": wagon_id,
+    #      "id": 1,
     #      "theme": "...",
     #      "passcode": "...",
     #      "people": [
     #         {
-    #           "uid": "wagon-N-player-i",
-    #           "position": [rand, rand],
-    #           "rotation": rand,
-    #           "model_type": "character-female-e",
+    #           "uid": "wagon-1-player-1",
+    #           "position": [0.23, 0.77],
+    #           "rotation": 0.55,
+    #           "model_type": "...",
     #           "items": []
-    #         }, ...
-    #       ]
+    #         }
+    #      ]
     #    }
-    wagon_entry = {
+    wagonEntry = {
         "id": wagon_id,
         "theme": theme,
         "passcode": passcode,
         "people": []
     }
 
-    # Loop over passengers to fill each part
+    # For each passenger, create the entries in "names", "player_details", and "wagons"
     for i, passenger in enumerate(passengers, start=1):
         player_key = f"player-{i}"
         full_name = passenger.get("name", "Unknown")
@@ -105,15 +112,16 @@ def convert_wagon_to_three_jsons(wagon_data):
         model_type = passenger.get("characer_model", "character-unknown")
         sex = infer_sex_from_model(model_type)
 
-        # 1) Fill names
-        names_output[wagon_key][player_key] = {
+        # -- "names" --
+        wagonNames["players"].append({
+            "playerId": player_key,
             "firstName": first_name,
             "lastName": last_name,
             "sex": sex,
             "fullName": full_name
-        }
+        })
 
-        # 2) Fill player_details
+        # -- "player_details" --
         profile_dict = {
             "name": full_name,
             "age": passenger.get("age", 0),
@@ -122,41 +130,54 @@ def convert_wagon_to_three_jsons(wagon_data):
             "role": passenger.get("role", ""),
             "mystery_intrigue": passenger.get("mystery_intrigue", "")
         }
-        player_details_output[wagon_key][player_key] = {
+        wagonDetails["players"].append({
+            "playerId": player_key,
             "profile": profile_dict
-        }
+        })
 
-        # 3) Fill wagons "people"
-        #    Random position within [0..1], random rotation in [0..1], items always []
+        # -- "wagons" (the "people" list) --
         person_dict = {
             "uid": f"wagon-{wagon_id}-player-{i}",
+            # random position in [0..1], random rotation in [0..1]
             "position": [round(random.random(), 2), round(random.random(), 2)],
             "rotation": round(random.random(), 2),
             "model_type": model_type,
             "items": []
         }
-        wagon_entry["people"].append(person_dict)
+        wagonEntry["people"].append(person_dict)
 
-    return names_output, player_details_output, wagon_entry
+    return wagonNames, wagonDetails, wagonEntry
 
 def convert_and_return_jsons(wagon_data):
-    names_result, player_details_result, wagons_entry = {}, {}, []
-    for wagon in wagon_data:
-        names_output, player_details_output, wagon_entry = convert_wagon_to_three_jsons(wagon)
-        names_result.update(names_output)
-        player_details_result.update(player_details_output)
-        wagons_entry.append(wagon_entry)
+    """
+    Takes a list of wagons. For each wagon, we build its piece of:
+      - wagonNames (for final "names" array)
+      - wagonDetails (for final "player_details" array)
+      - wagonEntry (for final "wagons" array)
+    Then merges them into the new combined JSON structure:
 
-    # 1) The 'names' JSON typically might aggregate multiple wagons, so we embed our single wagon's result:
-    #    For demonstration, just put it as "names": { ...single wagon data... }
-    all_names = {"names": names_result}
-
-    # 2) The 'player_details' JSON also might aggregate multiple wagons
-    all_player_details = {"player_details": player_details_result}
-
-    # 3) The 'wagons' JSON is typically an array of wagons. Here, we only have one:
-    all_wagons = {
-        "wagons": wagons_entry
+    {
+      "player_details": [ { ... }, { ... } ],
+      "wagons": [ { ... }, { ... } ],
+      "names": [ { ... }, { ... } ]
     }
+    """
+    names_list = []
+    player_details_list = []
+    wagons_list = []
 
-    return all_names, all_player_details, all_wagons
+    for wagon in wagon_data:
+        # Convert one wagon to the new partial outputs
+        wagonNames, wagonDetails, wagonEntry = convert_wagon_to_new_json_structure(wagon)
+        # Accumulate them
+        names_list.append(wagonNames)
+        player_details_list.append(wagonDetails)
+        wagons_list.append(wagonEntry)
+
+    # Now build the final JSON structure
+    final_data = {
+        "player_details": player_details_list,
+        "wagons": wagons_list,
+        "names": names_list
+    }
+    return final_data

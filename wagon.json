@@ -1,0 +1,16 @@
+{
+    "id": 5,
+    "theme": "Spy",
+    "passcode": "Decrypt",
+    "passengers": [
+        {
+            "name": "Oliver Hartley",
+            "age": 42,
+            "profession": "Cryptographer",
+            "personality": "Intelligent, analytical, and secluded",
+            "role": "Works on decrypting a century-old code that supposedly leads to a hidden treasure.",
+            "mystery_intrigue": "Has a hidden past in cybersecurity, working under the alias '<redacted>'. Believes the wagon holds the key to unlocking the code",
+            "characer_model": "character-male-e"
+        }
+    ]
+}
