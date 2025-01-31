@@ -1,0 +1,316 @@
+[
+    {
+        "id": 0,
+        "theme": "Tutorial (Start)",
+        "passcode": "start",
+        "passengers": []
+    },
+    {
+        "id": 1,
+        "theme": "Super Mario",
+        "passcode": "Toadstool",
+        "passengers": [
+            {
+                "name": "Lydia Thorne",
+                "age": 42,
+                "profession": "Botanist",
+                "personality": "Curious, nurturing, and determined",
+                "role": "Specializes in rare and magical plants, searching for a mythical mushroom.",
+                "mystery_intrigue": "Believes the <redacted> mushroom holds the key to curing a mysterious illness affecting her village.",
+                "characer_model": "character-female-e"
+            },
+            {
+                "name": "Oliver Blackwood",
+                "age": 30,
+                "profession": "Mushroom Farmer",
+                "personality": "Resourceful, practical, and secretive",
+                "role": "Grows exotic mushrooms for medicinal and magical purposes.",
+                "mystery_intrigue": "Holds a secret map to the last known <redacted> mushroom, inherited from his grandfather.",
+                "characer_model": "character-male-b"
+            },
+            {
+                "name": "Alexander Leafwood",
+                "age": 25,
+                "profession": "Mycologist",
+                "personality": "Analytical, meticulous, and curious",
+                "role": "Studies the properties of mushrooms, aiming to unlock their healing potential.",
+                "mystery_intrigue": "Has discovered ancient texts hinting at the <redacted> mushroom's legendary healing properties.",
+                "characer_model": "character-male-e"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "theme": "Super Mario",
+        "passcode": "Bowser",
+        "passengers": [
+            {
+                "name": "Dr. Melissa Hartley",
+                "age": 48,
+                "profession": "Veterinarian",
+                "personality": "Compassionate, observant, and patient",
+                "role": "Cares for various animals, including a sick turtle named <redacted>.",
+                "mystery_intrigue": "Hides <redacted> in her luggage, hoping to transport him discreetly for urgent treatment in a specialized facility.",
+                "characer_model": "character-female-a"
+            },
+            {
+                "name": "Thomas Kinsley",
+                "age": 38,
+                "profession": "Zoologist",
+                "personality": "Analytical, detail-oriented, and kind",
+                "role": "Studies unique wildlife, recently discovered a rare breed of turtles.",
+                "mystery_intrigue": "Entrusted with a secret code that will unlock a hidden research lab but has misplaced it. Close friend of Dr. Melissa Hartley.",
+                "characer_model": "character-male-e"
+            },
+            {
+                "name": "Sophia Lorenzo",
+                "age": 28,
+                "profession": "Conservationist",
+                "personality": "Passionate, determined, and charismatic",
+                "role": "Advocates for wildlife protection, actively fights against illegal animal trades.",
+                "mystery_intrigue": "Works with underground networks to rescue endangered animals, including turtles. Often collaborates with Thomas Kinsley.",
+                "characer_model": "character-female-f"
+            },
+            {
+                "name": "Henry Malone",
+                "age": 45,
+                "profession": "Treasure Hunter",
+                "personality": "Adventurous, resourceful, and tenacious",
+                "role": "Hunts for valuable artifacts, including a legendary turtle shell artifact said to be worth a fortune.",
+                "mystery_intrigue": "Knows about a secret map leading to the turtle's artifact but needs an expert's help. Often at odds with Sophia Lorenzo's conservation efforts.",
+                "characer_model": "character-male-b"
+            },
+            {
+                "name": "Emma Whitfield",
+                "age": 64,
+                "profession": "Retired Biologist",
+                "personality": "Wise, calm, and knowledgeable",
+                "role": "Expert in rare wildlife, often consulted about endangered species.",
+                "mystery_intrigue": "Possesses a rare book that contains clues to the turtle artifact's location. Mentor to both Thomas Kinsley and Sophia Lorenzo.",
+                "characer_model": "character-female-c"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "theme": "Super Mario",
+        "passcode": "Lava",
+        "passengers": [
+            {
+                "name": "Dr. Amelia Hartford",
+                "age": 45,
+                "profession": "Volcanologist",
+                "personality": "Analytical, passionate, and resilient",
+                "role": "Studies volcanic activity and its impact on the environment. Recently discovered a rare ore in a volcano.",
+                "mystery_intrigue": "Believes the ore emits a unique energy that could revolutionize renewable energy. Has a secret document detailing the ore's properties.",
+                "characer_model": "character-female-e"
+            },
+            {
+                "name": "Thomas 'Redbeard' O'Connor",
+                "age": 48,
+                "profession": "Lumberjack",
+                "personality": "Strong, loyal, and straightforward",
+                "role": "Works in the forests near the volcano. Knows the terrain and its dangers well.",
+                "mystery_intrigue": "Found unusual rock formations near his work site that match descriptions in Dr. Hartford's research. Keeps a sample hidden in his toolbox.",
+                "characer_model": "character-male-b"
+            },
+            {
+                "name": "Detective Leonardo 'Leo' Santiago",
+                "age": 37,
+                "profession": "Police Detective",
+                "personality": "Diligent, resourceful, and skeptical",
+                "role": "Investigates a series of mysterious disappearances near the volcano. Suspects a link to illegal mining operations.",
+                "mystery_intrigue": "Discovered a notebook with encoded messages that reference '<redacted>'. Believes it is a key to uncovering the truth behind the disappearances.",
+                "characer_model": "character-male-c"
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "theme": "Super Mario",
+        "passcode": "Mushroom",
+        "passengers": [
+            {
+                "name": "Dr. Amelia Fungi",
+                "age": 45,
+                "profession": "Mycologist",
+                "personality": "Intelligent, reserved, and passionate",
+                "role": "Researcher studying rare and unknown fungi species.",
+                "mystery_intrigue": "Discovered a rare mushroom with medicinal properties, secretly being sought by pharmaceutical companies.",
+                "characer_model": "character-female-e"
+            },
+            {
+                "name": "Charles Forager",
+                "age": 38,
+                "profession": "Chef and <redacted> Forager",
+                "personality": "Adventurous, enthusiastic, and creative",
+                "role": "Collects and cooks rare mushrooms for high-end restaurants.",
+                "mystery_intrigue": "Has a map to a hidden forest with exotic mushrooms, but is being followed by rival foragers.",
+                "characer_model": "character-male-f"
+            },
+            {
+                "name": "Prof. Augustus Spore",
+                "age": 62,
+                "profession": "Botanist",
+                "personality": "Wise, patient, and inquisitive",
+                "role": "Expert on plant species, especially fungi, and author of numerous botanical books.",
+                "mystery_intrigue": "Holds an ancient manuscript detailing a mushroom with mythical healing properties.",
+                "characer_model": "character-male-a"
+            },
+            {
+                "name": "Luna Moon",
+                "age": 25,
+                "profession": "Freelance Photographer",
+                "personality": "Imaginative, bold, and free-spirited",
+                "role": "Takes stunning photographs of natural landscapes and wildlife.",
+                "mystery_intrigue": "Photographed a glowing mushroom that only appears during the full moon, sparking interest from scientists.",
+                "characer_model": "character-female-b"
+            },
+            {
+                "name": "Detective Marcus Shroom",
+                "age": 40,
+                "profession": "Private Investigator",
+                "personality": "Skeptical, persistent, and thorough",
+                "role": "Investigates mysterious disappearances linked to a legend about a magical mushroom.",
+                "mystery_intrigue": "Closer to uncovering the truth about the legendary mushroom, but faces powerful adversaries.",
+                "characer_model": "character-male-c"
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "theme": "Super Mario",
+        "passcode": "Plumber",
+        "passengers": [
+            {
+                "name": "Maria Lopez",
+                "age": 28,
+                "profession": "Environmental Engineer",
+                "personality": "Dedicated, resourceful, and empathetic",
+                "role": "Works on sustainable water management projects, recently discovered a severe plumbing issue in the city's water supply.",
+                "mystery_intrigue": "Her research into a mysterious water contamination leads her to a secretive organization that uses plumbers as spies. She has a hidden past as a skilled hacker.",
+                "characer_model": "character-female-e"
+            },
+            {
+                "name": "Albert Blackwood",
+                "age": 47,
+                "profession": "Historian",
+                "personality": "Inquisitive, meticulous, and passionate",
+                "role": "Studies the history of urban infrastructure, has a particular interest in the evolution of plumbing systems.",
+                "mystery_intrigue": "Recently found an old manuscript that hints at a hidden underground network of ancient plumbing, believed to hold valuable artifacts. His research is funded by a mysterious benefactor.",
+                "characer_model": "character-male-a"
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "theme": "Super Mario",
+        "passcode": "Yoshi",
+        "passengers": [
+            {
+                "name": "Dr. Emily Hart",
+                "age": 38,
+                "profession": "Botanist",
+                "personality": "Meticulous, curious, and compassionate",
+                "role": "Studies rare plant species and their medicinal properties. Recently discovered a rare flower known as <redacted>mori.",
+                "mystery_intrigue": "Believes the <redacted>mori flower can cure a deadly disease affecting her family. Carries a notebook filled with botanical secrets.",
+                "characer_model": "character-female-e"
+            },
+            {
+                "name": "Samuel Nakamura",
+                "age": 45,
+                "profession": "Historian",
+                "personality": "Wise, patient, and analytical",
+                "role": "Specializes in ancient Japanese history and culture. Recently uncovered an ancient scroll detailing the legend of the <redacted>mori flower.",
+                "mystery_intrigue": "Holds a key artifact that is said to unlock the true power of the <redacted>mori flower. Seeks to protect the flower's legacy.",
+                "characer_model": "character-male-a"
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "theme": "Super Mario",
+        "passcode": "Kart",
+        "passengers": [
+            {
+                "name": "Amelia Hartford",
+                "age": 28,
+                "profession": "Archaeologist",
+                "personality": "Curious, adventurous, and determined",
+                "role": "Recently discovered ancient artifacts that hold clues to a lost city.",
+                "mystery_intrigue": "Hiding a map fragment leading to the lost city, which she found in a remote cave. Suspects one of the passengers is after her artifacts.",
+                "characer_model": "character-female-a"
+            },
+            {
+                "name": "Dr. Leonard Kessler",
+                "age": 45,
+                "profession": "Historian",
+                "personality": "Wise, analytical, and reserved",
+                "role": "Specializes in ancient civilizations and their mythologies.",
+                "mystery_intrigue": "Knows an ancient language that ties into the clues of the lost city Amelia is searching for. Has a secret past with Amelia's mentor.",
+                "characer_model": "character-male-a"
+            },
+            {
+                "name": "Thomas Riggs",
+                "age": 38,
+                "profession": "Private Investigator",
+                "personality": "Sharp, resourceful, and secretive",
+                "role": "Hired by a mysterious client to retrieve the ancient artifacts found by Amelia.",
+                "mystery_intrigue": "His client is a rival archaeologist who wants to claim the discovery for himself. Has a hidden agenda involving the lost city.",
+                "characer_model": "character-male-d"
+            },
+            {
+                "name": "Sophia Gray",
+                "age": 50,
+                "profession": "Antique Dealer",
+                "personality": "Elegant, calculating, and opportunistic",
+                "role": "Deals in rare and valuable antiques, sometimes through less-than-legal means.",
+                "mystery_intrigue": "Has an interest in the artifacts Amelia found, as they might lead her to a valuable treasure. Has contacts in the underground market.",
+                "characer_model": "character-female-d"
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "theme": "Super Mario",
+        "passcode": "Stache",
+        "passengers": [
+            {
+                "name": "Dr. Veronica Hartley",
+                "age": 42,
+                "profession": "Renowned Anthropologist",
+                "personality": "Inquisitive, methodical, and analytical",
+                "role": "Explores ancient cultures, recently uncovered an artifact linked to a mysterious cult.",
+                "mystery_intrigue": "Discovered a hidden chamber filled with artifacts that bear engravings resembling a mustache. Holds a fragment of a map leading to a lost city.",
+                "characer_model": "character-female-e"
+            },
+            {
+                "name": "Marvin Thompson",
+                "age": 38,
+                "profession": "Private Investigator",
+                "personality": "Resourceful, tenacious, and reserved",
+                "role": "On the trail of a missing heirloom, a golden mustache brooch, that was stolen from a wealthy family.",
+                "mystery_intrigue": "Believes the brooch holds a hidden message that can unlock a family fortune. Suspects a fellow passenger.",
+                "characer_model": "character-male-c"
+            },
+            {
+                "name": "Olivia Harris",
+                "age": 27,
+                "profession": "Stylist",
+                "personality": "Creative, observant, and passionate",
+                "role": "Designs avant-garde fashion pieces, recently created a mustache-themed collection.",
+                "mystery_intrigue": "Received an anonymous letter containing a riddle about a mustache. Believes the answer will change her life.",
+                "characer_model": "character-female-b"
+            },
+            {
+                "name": "Harold Kingsley",
+                "age": 65,
+                "profession": "Retired Detective",
+                "personality": "Wise, patient, and contemplative",
+                "role": "Enjoys solving cold cases, recently reopened a case involving a stolen mustache-shaped gem.",
+                "mystery_intrigue": "Has a collection of mustache-related items, one of which is a key to a mysterious locked box.",
+                "characer_model": "character-male-a"
+            }
+        ]
+    }
+]

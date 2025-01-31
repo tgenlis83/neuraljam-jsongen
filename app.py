@@ -1,4 +1,4 @@
-import app as gr
+import gradio as gr
 from generate import gradio_interface
 
 # Gradio app
@@ -11,10 +11,7 @@ interface = gr.Interface(
         gr.Number(label="Maximum Passengers per Wagon", value=5, precision=0)
     ],
     outputs=[
-        gr.Textbox(label="LLM Json"),
-        gr.Textbox(label="All Names JSON"),
-        gr.Textbox(label="All Player Details JSON"),
-        gr.Textbox(label="All Wagons JSON")
+        gr.Textbox(label="LLM Json")
     ],
     title="Wagon Passcode and Passenger Generator",
     description="Generate unique wagon passcodes and dynamic passengers based on the train's theme and specifications!"

@@ -25,24 +25,27 @@ client = Mistral(api_key=api_key)
 def generate_wagon_passcodes(theme, num_wagons):
     if num_wagons <= 0 or num_wagons > 10:
         return "Please provide a valid number of wagons (1-10)."
+    print(f"Generating {num_wagons} passcodes for the wagons...")
 
     # Prompt Mistral API to generate a theme and passcodes
     prompt = f"""
     This is a video game about a player trying to reach the locomotive of a train by finding a passcode for each wagon.
-    You are tasked with generating unique passcodes for the wagons based on the theme '{theme}', to make the game more engaging, fun, and with a sense of progression.
+    You are tasked with generating unique passcodes for the wagons based on the theme '{theme}', 
+    to make the game more engaging, fun, and with a sense of progression, from easiest to hardest.
     Each password should be unique enough to not be related to each other but still be connected to the theme.
-    Generate {num_wagons} unique and creative passcodes for the wagons. Each passcode must:
+    Generate exactly {num_wagons} unique and creative passcodes for the wagons. Each passcode must:
     1. Be related to the theme.
     2. Be unique, interesting, and creative.
     3. In one word, letters only (no spaces or special characters).
     No explanation needed, just the theme and passcodes in a JSON object format.
-    Example:
+    Example for the theme "Pirates" and 5 passcodes:
     {{
         "theme": "Pirates",
         "passcodes": ["Treasure", "Rum", "Skull", "Compass", "Anchor"]
     }}
     Now, generate a theme and passcodes.
     """
+    print(prompt)
     response = client.chat.complete(
         model="mistral-large-latest",
         messages=[
@@ -57,7 +60,7 @@ def generate_wagon_passcodes(theme, num_wagons):
         passcodes = result["passcodes"]
         print("Passcodes:", passcodes)
     except json.JSONDecodeError:
-        print(response.choices[0].message.content)
+        print("FAILURE", response.choices[0].message.content)
         return "Failed to decode the response. Please try again."
     return passcodes
 
@@ -180,9 +183,8 @@ def generate_train(theme, num_wagons):
 
 def gradio_interface(theme, num_wagons, min_passengers, max_passengers):
     wagons_json = generate_train_json(theme, num_wagons, min_passengers, max_passengers)
-    all_names, all_player_details, all_wagons = convert_and_return_jsons(json.loads(wagons_json))
-    wagons_json_pretty = json.dumps(json.loads(wagons_json), indent=4)
-    all_names_pretty = json.dumps(all_names, indent=4)
-    all_player_details_pretty = json.dumps(all_player_details, indent=4)
-    all_wagons_pretty = json.dumps(all_wagons, indent=4)
-    return wagons_json_pretty, all_names_pretty, all_player_details_pretty, all_wagons_pretty
+    with open("wagons.json", "w") as f:
+        f.write(wagons_json)
+    all_names = convert_and_return_jsons(json.loads(wagons_json))
+    all_names = json.dumps(all_names, indent=4)
+    return all_names

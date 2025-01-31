@@ -105,6 +105,9 @@ def convert_wagon_to_new_json_structure(wagon_data):
 
     # For each passenger, create the entries in "names", "player_details", and "wagons"
     for i, passenger in enumerate(passengers, start=1):
+        if not isinstance(passenger, dict):
+            print(f"Passenger {i} : {passenger} is not a dictionary; skipping.")
+            continue
         player_key = f"player-{i}"
         full_name = passenger.get("name", "Unknown")
         first_name, last_name = parse_name(full_name)
