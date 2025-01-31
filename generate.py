@@ -65,10 +65,11 @@ def generate_wagon_passcodes(theme, num_wagons):
     return passcodes
 
 # Function to generate passengers using Mistral API
-def generate_passengers_for_wagon(passcode, num_passengers):
+def generate_passengers_for_wagon(theme, passcode, num_passengers):
     # Generate passengers with the Mistral API
     prompt = f"""
     Passengers are in a wagon. The player can interact with them to learn more about their stories.
+    The passengers live in the world of the theme "{theme}" and their stories are connected to the passcode "{passcode}".
     The following is a list of passengers on a train wagon. The wagon is protected by the passcode "{passcode}".
     Their stories are intertwined, and each passenger has a unique role and mystery, all related to the theme and the passcode.
     The player must be able to guess the passcode by talking to the passengers and uncovering their secrets.
@@ -169,7 +170,7 @@ def generate_train_json(theme, num_wagons, min_passengers, max_passengers):
     })
     for i, passcode in enumerate(passcodes):
         num_passengers = random.randint(min_passengers, max_passengers)
-        passengers = generate_passengers_for_wagon(passcode, num_passengers)
+        passengers = generate_passengers_for_wagon(theme, passcode, num_passengers)
         wagons.append({"id": i + 1, "theme": theme, "passcode": passcode, "passengers": passengers})
     
     return json.dumps(wagons, indent=4)
