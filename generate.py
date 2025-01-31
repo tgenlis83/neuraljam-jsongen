@@ -177,14 +177,13 @@ def generate_train_json(theme, num_wagons, min_passengers, max_passengers):
 def generate_train(theme, num_wagons):
     wagons_json = generate_train_json(theme, num_wagons, 2, 10)
     wagons = json.loads(wagons_json)
-    all_names, all_player_details, all_wagons = convert_and_return_jsons(wagons)
-    return all_names, all_player_details, all_wagons
+    all_names = convert_and_return_jsons(wagons)
+    all_names = json.dumps(all_names, indent=4)
+    return all_names
 
 
 def gradio_interface(theme, num_wagons, min_passengers, max_passengers):
     wagons_json = generate_train_json(theme, num_wagons, min_passengers, max_passengers)
-    with open("wagons.json", "w") as f:
-        f.write(wagons_json)
     all_names = convert_and_return_jsons(json.loads(wagons_json))
     all_names = json.dumps(all_names, indent=4)
     return all_names

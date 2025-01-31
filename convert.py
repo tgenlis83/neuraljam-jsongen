@@ -184,3 +184,27 @@ def convert_and_return_jsons(wagon_data):
         "names": names_list
     }
     return final_data
+
+def convert_json_files_to_one(all_json_path, *json_paths):
+    """
+    Reads multiple JSON files, converts them using the convert_and_return_jsons function,
+    and writes the combined result to a single JSON file.
+
+    Parameters:
+    - all_json_path: The path where the combined JSON will be saved.
+    - json_paths: Paths to the individual JSON files to be converted.
+    """
+    combined_wagon_data = []
+
+    # Read and accumulate data from each JSON file
+    for json_path in json_paths:
+        with open(json_path, 'r') as file:
+            wagon_data = json.load(file)
+            combined_wagon_data.extend(wagon_data)
+
+    # Convert the accumulated data
+    final_data = convert_and_return_jsons(combined_wagon_data)
+
+    # Write the final combined JSON to the specified path
+    with open(all_json_path, 'w') as file:
+        json.dump(final_data, file, indent=2)
